@@ -8,8 +8,8 @@
     
     <title>API Documentation for Data &mdash; Python bindings for NIX 0.10.4 Beta documentation</title>
     
-    <link rel="stylesheet" href="static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -20,16 +20,12 @@
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="static/jquery.js"></script>
-    <script type="text/javascript" src="static/underscore.js"></script>
-    <script type="text/javascript" src="static/doctools.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Python bindings for NIX 0.10.4 Beta documentation" href="index.html" />
     <link rel="next" title="API Documentation for Metadata" href="api_metadata.html" />
-    <link rel="prev" title="NIXPy Tutorial" href="tutorial.html" />
-   
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
-
+    <link rel="prev" title="Tutorials" href="tutorial.html" /> 
   </head>
   <body>
     <div class="related">
@@ -42,7 +38,7 @@
           <a href="api_metadata.html" title="API Documentation for Metadata"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="tutorial.html" title="NIXPy Tutorial"
+          <a href="tutorial.html" title="Tutorials"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">Python bindings for NIX 0.10.4 Beta documentation</a> &raquo;</li> 
       </ul>
@@ -187,7 +183,7 @@ change the creation time.</p>
 
 <dl class="method">
 <dt id="nix.File.find_sections">
-<tt class="descname">find_sections</tt><big>(</big><em>filtr=&lt;function &lt;lambda&gt; at 0x7f30f42a1668&gt;</em>, <em>limit=9223372036854775807</em><big>)</big><a class="headerlink" href="#nix.File.find_sections" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">find_sections</tt><big>(</big><em>filtr=&lt;function &lt;lambda&gt; at 0x7f27886a21b8&gt;</em>, <em>limit=9223372036854775807</em><big>)</big><a class="headerlink" href="#nix.File.find_sections" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get all sections and their child sections recursively.</p>
 <p>This method traverses the trees of all sections. The traversal
 is accomplished via breadth first and can be limited in depth. On each node or
@@ -312,6 +308,11 @@ to change the update time.</p>
 </tbody>
 </table>
 </dd></dl>
+
+<dl class="method">
+<dt id="nix.File.validate">
+<tt class="descname">validate</tt><big>(</big><em>(File)arg1</em><big>)</big> &rarr; Result<a class="headerlink" href="#nix.File.validate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="attribute">
 <dt id="nix.File.version">
@@ -482,7 +483,7 @@ If <tt class="docutils literal"><span class="pre">dtype</span></tt> is not speci
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>name</strong> (<a class="reference external" href="http://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The name of the tag to create.</li>
 <li><strong>type</strong> (<a class="reference external" href="http://docs.python.org/2.7/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; The type of tag.</li>
-<li><strong>position</strong> &#8211; Coordinates of the start position 
+<li><strong>position</strong> &#8211; Coordinates of the start position
 in units of the respective data dimension.</li>
 </ul>
 </td>
@@ -544,8 +545,8 @@ entity. This is an optional read-write property, and can be None if no definitio
 </dd></dl>
 
 <dl class="method">
-<dt id="nix.Block.findsources">
-<tt class="descname">findsources</tt><big>(</big><em>filtr=&lt;function &lt;lambda&gt; at 0x7f30f42a11b8&gt;</em>, <em>limit=9223372036854775807</em><big>)</big><a class="headerlink" href="#nix.Block.findsources" title="Permalink to this definition">¶</a></dt>
+<dt id="nix.Block.find_sources">
+<tt class="descname">find_sources</tt><big>(</big><em>filtr=&lt;function &lt;lambda&gt; at 0x7f278869ec08&gt;</em>, <em>limit=9223372036854775807</em><big>)</big><a class="headerlink" href="#nix.Block.find_sources" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get all sources in this block recursively.</p>
 <p>This method traverses the tree of all sources in the block. The traversal
 is accomplished via breadth first and can be limited in depth. On each node or
@@ -1986,8 +1987,8 @@ entity. This is an optional read-write property, and can be None if no definitio
 </dd></dl>
 
 <dl class="method">
-<dt id="nix.Source.findsources">
-<tt class="descname">findsources</tt><big>(</big><em>filtr=&lt;function &lt;lambda&gt; at 0x7f30f42a50c8&gt;</em>, <em>limit=9223372036854775807</em><big>)</big><a class="headerlink" href="#nix.Source.findsources" title="Permalink to this definition">¶</a></dt>
+<dt id="nix.Source.find_sources">
+<tt class="descname">find_sources</tt><big>(</big><em>filtr=&lt;function &lt;lambda&gt; at 0x7f27886a2f50&gt;</em>, <em>limit=9223372036854775807</em><big>)</big><a class="headerlink" href="#nix.Source.find_sources" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get all child sources of this source recursively.</p>
 <p>This method traverses the tree of all sources. The traversal
 is accomplished via breadth first and can be limited in depth. On each node or
@@ -2136,54 +2137,49 @@ to change the update time.</p>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-<p class="logo">
-  <a href="index.html">
-    <img class="logo" src="static/logo.png" alt="Logo"/>
-    
-  </a>
-</p>
-
-
-
-
-
-<p>
-<iframe src="http://ghbtns.com/github-btn.html?user=G-Node&repo=nixpy&type=watch&count=False&size=large"
-  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
-</p>
-
-
-
-
-    
-
-<p>
-<a href="https://travis-ci.org/G-Node/nixpy">
-    <img
-        alt="https://secure.travis-ci.org/G-Node/nixpy.png?branch=master"
-        src="https://secure.travis-ci.org/G-Node/nixpy.png?branch=master"
-    >
-</a>
-</p>
-<h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="install.html">Installation Guidelines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html">NIXPy Tutorial</a></li>
-</ul>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="">API Documentation for Data</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#file">File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#block">Block</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#dataarray">DataArray</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#dataset">DataSet</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#tags">Tags</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#source">Source</a></li>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">API Documentation for Data</a><ul>
+<li><a class="reference internal" href="#file">File</a><ul>
+<li><a class="reference internal" href="#working-with-files">Working with files</a></li>
+<li><a class="reference internal" href="#file-open-modes">File open modes</a></li>
+<li><a class="reference internal" href="#file-api">File API</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="api_metadata.html">API Documentation for Metadata</a></li>
+<li><a class="reference internal" href="#block">Block</a><ul>
+<li><a class="reference internal" href="#create-a-new-block">Create a new Block</a></li>
+<li><a class="reference internal" href="#working-with-blocks">Working with blocks</a></li>
+<li><a class="reference internal" href="#deleting-a-block">Deleting a block</a></li>
+<li><a class="reference internal" href="#block-api">Block API</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dataarray">DataArray</a><ul>
+<li><a class="reference internal" href="#create-and-delete-a-dataarray">Create and delete a DataArray</a></li>
+<li><a class="reference internal" href="#dataarray-api">DataArray API</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dataset">DataSet</a></li>
+<li><a class="reference internal" href="#tags">Tags</a><ul>
+<li><a class="reference internal" href="#tag-api">Tag API</a></li>
+<li><a class="reference internal" href="#multitag-api">MultiTag API</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#source">Source</a></li>
+</ul>
+</li>
 </ul>
 
-
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tutorial.html"
+                        title="previous chapter">Tutorials</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="api_metadata.html"
+                        title="next chapter">API Documentation for Metadata</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/api_data.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
@@ -2201,20 +2197,24 @@ to change the update time.</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="footer">
-      &copy;2014, German Neuroinformatics Node, Christian Kellner, Adrian Stoewer, Andrey Sobolev, Jan Grewe, Balint Morvai.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.2.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.6.0</a>
-      
-      |
-      <a href="sources/api_data.txt"
-          rel="nofollow">Page source</a></li>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="api_metadata.html" title="API Documentation for Metadata"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tutorial.html" title="Tutorials"
+             >previous</a> |</li>
+        <li><a href="index.html">Python bindings for NIX 0.10.4 Beta documentation</a> &raquo;</li> 
+      </ul>
     </div>
-
-    
-
-    
+    <div class="footer">
+        &copy; Copyright 2014, German Neuroinformatics Node, Christian Kellner, Adrian Stoewer, Andrey Sobolev, Jan Grewe, Balint Morvai.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
   </body>
 </html>

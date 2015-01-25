@@ -8,8 +8,8 @@
     
     <title>NIX Python Binding Documentation &mdash; Python bindings for NIX 0.10.4 Beta documentation</title>
     
-    <link rel="stylesheet" href="static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -20,15 +20,11 @@
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="static/jquery.js"></script>
-    <script type="text/javascript" src="static/underscore.js"></script>
-    <script type="text/javascript" src="static/doctools.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Python bindings for NIX 0.10.4 Beta documentation" href="#" />
-    <link rel="next" title="Installation Guidelines" href="install.html" />
-   
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
-
+    <link rel="next" title="Installation Guidelines" href="install.html" /> 
   </head>
   <body>
     <div class="related">
@@ -53,13 +49,31 @@
 <h1>NIX Python Binding Documentation<a class="headerlink" href="#nix-python-binding-documentation" title="Permalink to this headline">¶</a></h1>
 <p>The nixpy module contains the python binding to the nix c++ library. In order
 to use it you also have to have the nix library installed.</p>
-<div class="section" id="nixpy-overview">
-<h2>NIXPy Overview<a class="headerlink" href="#nixpy-overview" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="getting-started">
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
 <p>The following sections should help you getting started with nixpy.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="install.html">Installation Guidelines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html">NIXPy Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation Guidelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="install.html#install-dependencies">Install Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#build-and-install-nix">Build and Install NIX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html#build-and-install-nixpy">Build and Install NIXPy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#design-principles">Design Principles</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#list-of-tutorials">List of Tutorials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#working-with-files">Working with Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#basic-data-structures">Basic data structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#tagging-regions">Tagging regions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#features">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#storing-the-origin-of-data">Storing the origin of data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html#adding-arbitrary-metadata">Adding arbitrary metadata</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -94,46 +108,23 @@ to use it you also have to have the nix library installed.</p>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-<p class="logo">
-  <a href="#">
-    <img class="logo" src="static/logo.png" alt="Logo"/>
-    
-  </a>
-</p>
-
-
-
-
-
-<p>
-<iframe src="http://ghbtns.com/github-btn.html?user=G-Node&repo=nixpy&type=watch&count=False&size=large"
-  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
-</p>
-
-
-
-
-    
-
-<p>
-<a href="https://travis-ci.org/G-Node/nixpy">
-    <img
-        alt="https://secure.travis-ci.org/G-Node/nixpy.png?branch=master"
-        src="https://secure.travis-ci.org/G-Node/nixpy.png?branch=master"
-    >
-</a>
-</p>
-<h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="install.html">Installation Guidelines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial.html">NIXPy Tutorial</a></li>
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">NIX Python Binding Documentation</a><ul>
+<li><a class="reference internal" href="#getting-started">Getting started</a></li>
+<li><a class="reference internal" href="#api-documentation">API Documentation</a></li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="api_data.html">API Documentation for Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api_metadata.html">API Documentation for Metadata</a></li>
+</li>
 </ul>
 
-
+  <h4>Next topic</h4>
+  <p class="topless"><a href="install.html"
+                        title="next chapter">Installation Guidelines</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
@@ -151,20 +142,21 @@ to use it you also have to have the nix library installed.</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="footer">
-      &copy;2014, German Neuroinformatics Node, Christian Kellner, Adrian Stoewer, Andrey Sobolev, Jan Grewe, Balint Morvai.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.2.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.6.0</a>
-      
-      |
-      <a href="sources/index.txt"
-          rel="nofollow">Page source</a></li>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="install.html" title="Installation Guidelines"
+             >next</a> |</li>
+        <li><a href="#">Python bindings for NIX 0.10.4 Beta documentation</a> &raquo;</li> 
+      </ul>
     </div>
-
-    
-
-    
+    <div class="footer">
+        &copy; Copyright 2014, German Neuroinformatics Node, Christian Kellner, Adrian Stoewer, Andrey Sobolev, Jan Grewe, Balint Morvai.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+    </div>
   </body>
 </html>
