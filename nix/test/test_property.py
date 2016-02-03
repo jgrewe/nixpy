@@ -156,18 +156,5 @@ class TestValue(unittest.TestCase):
 
     def test_value_attrs(self):
         value = Value(0)
-
-        value.reference = "a"
-        assert(value.reference == "a")
-
-        value.filename = "b"
-        assert(value.filename == "b")
-
-        value.filename = "c"
-        assert(value.filename == "c")
-
-        value.checksum = "d"
-        assert(value.checksum == "d")
-
         value.uncertainty = 0.5
         assert(value.uncertainty == 0.5)

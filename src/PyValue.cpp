@@ -114,10 +114,6 @@ void PyValue::do_export() {
 
     class_<Value>("Value")
         .def("__init__", make_constructor(create))
-        .def_readwrite("reference", &Value::reference)
-        .def_readwrite("filename", &Value::filename)
-        .def_readwrite("encoder", &Value::encoder)
-        .def_readwrite("checksum", &Value::checksum)
         .def_readwrite("uncertainty", &Value::uncertainty)
         .add_property("value", get, set)
         .add_property("data_type", &Value::type)
