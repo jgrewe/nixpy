@@ -143,6 +143,8 @@ def update_alias_range_dimension(fname):
     dims = list()
     with h5py.File(fname, mode="r") as hfile:
         for block in hfile["data"].values():
+            if "data_array" not in block:
+                continue
             for data_array in block["data_arrays"].values():
                 if "dimensions" not in data_array:
                     continue
