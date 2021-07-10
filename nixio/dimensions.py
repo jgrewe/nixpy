@@ -37,14 +37,15 @@ class IndexMode(Enum):
     GEQ = "geq"
 
 
-class RangeMode(Enum):
-    """
-    RangeMode used for slicing along dimensions. 
-    *Inclusive* ranges are defines as [start, end], i.e. start and end are included
-    *Exclusive* ranges are defined as [start, end), i.e. start is included, end is not
-    """
-    Inclusive = "inclusive"
+class SliceMode(Enum):
     Exclusive = "exclusive"
+    Inclusive = "inclusive"
+
+    def to_index_mode(self):
+        if self == self.Exclusive:
+            return IndexMode.Less
+        if self == self.Inclusive:
+            return IndexMode.LessOrEqual
 
 
 class DimensionContainer(Container):
@@ -402,7 +403,7 @@ class SampledDimension(Dimension):
 
         raise ValueError("Unknown IndexMode: {}".format(mode))
 
-    def range_indices(self, start_position, end_position, mode=RangeMode.Exclusive):
+    def range_indices(self, start_position, end_position, mode=SliceMode.Exclusive):
         """
         Returns the start and end indices in this dimension that are matching to the given start and end position.
 
@@ -410,8 +411,8 @@ class SampledDimension(Dimension):
         :type start_position: float
         :param end_position: the end position of the range.
         :type end_position: float
-        :param mode: The nixio.RangeMode. Defaults to nixio.RangeMode.Exclusive, i.e. the end position is not part of the range.
-        :type mode: nixio.RangeMode
+        :param mode: The nixio.SliceMode. Defaults to nixio.SliceMode.Exclusive, i.e. the end position is not part of the range.
+        :type mode: nixio.SliceMode
 
         :returns: The respective start and end indices. None, if the range is empty!
         :rtype: tuple of int
@@ -419,10 +420,10 @@ class SampledDimension(Dimension):
         :raises: ValueError if invalid mode is given
         :raises: Index Error if start position is greater than end position.
         """
-        if mode is not RangeMode.Exclusive and mode is not RangeMode.Inclusive:
-            raise ValueError("Unknown RangeMode: {}".format(mode))
+        if mode is not SliceMode.Exclusive and mode is not SliceMode.Inclusive:
+            raise ValueError("Unknown SliceMode: {}".format(mode))
 
-        end_mode = IndexMode.Less if mode == RangeMode.Exclusive else IndexMode.LessOrEqual
+        end_mode = IndexMode.Less if mode == SliceMode.Exclusive else IndexMode.LessOrEqual
         try:
             start_index = self.index_of(start_position, mode=IndexMode.GreaterOrEqual)
             end_index = self.index_of(end_position, mode=end_mode)
@@ -661,7 +662,7 @@ class RangeDimension(Dimension):
 
         raise ValueError("Unknown IndexMode: {}".format(mode))
 
-    def range_indices(self, start_position, end_position, mode=RangeMode.Exclusive):
+    def range_indices(self, start_position, end_position, mode=SliceMode.Exclusive):
         """
         Returns the start and end indices in this dimension that are matching to the given start and end position.
 
@@ -669,8 +670,8 @@ class RangeDimension(Dimension):
         :type start_position: float
         :param end_position: the end position of the range.
         :type end_position: float
-        :param mode: The nixio.RangeMode. Defaults to nixio.RangeMode.Exclusive, i.e. the end position is not part of the range.
-        :type mode: nixio.RangeMode
+        :param mode: The nixio.SliceMode. Defaults to nixio.SliceMode.Exclusive, i.e. the end position is not part of the range.
+        :type mode: nixio.SliceMode
 
         :returns: The respective start and end indices. None, if range is empty
         :rtype: tuple of int
@@ -678,12 +679,12 @@ class RangeDimension(Dimension):
         :raises: ValueError if invalid mode is given
         :raises: Index Error if start position is greater than end position.
         """
-        if mode is not RangeMode.Exclusive and mode is not RangeMode.Inclusive:
-            raise ValueError("Unknown RangeMode: {}".format(mode))
+        if mode is not SliceMode.Exclusive and mode is not SliceMode.Inclusive:
+            raise ValueError("Unknown SliceMode: {}".format(mode))
         if start_position > end_position:
             raise IndexError("Start position {} is greater than end position {}.".format(start_position, end_position))
         ticks = self.ticks
-        end_mode = IndexMode.Less if mode == RangeMode.Exclusive else IndexMode.LessOrEqual
+        end_mode = IndexMode.Less if mode == SliceMode.Exclusive else IndexMode.LessOrEqual
         try:
             start_index = self.index_of(start_position, mode=IndexMode.GreaterOrEqual, ticks=ticks)
             end_index = self.index_of(end_position, mode=end_mode, ticks=ticks)
@@ -812,7 +813,7 @@ class SetDimension(Dimension):
 
         raise ValueError("Unknown IndexMode: {}".format(mode))
 
-    def range_indices(self, start_position, end_position, mode=RangeMode.Exclusive):
+    def range_indices(self, start_position, end_position, mode=SliceMode.Exclusive):
         """
         Returns the start and end indices in this dimension that are matching to the given start and end position.
 
@@ -820,8 +821,8 @@ class SetDimension(Dimension):
         :type start_position: float
         :param end_position: the end position of the range.
         :type end_position: float
-        :param mode: The nixio.RangeMode. Defaults to nixio.RangeMode.Exclusive, i.e. the end position is not part of the range.
-        :type mode: nixio.RangeMode
+        :param mode: The nixio.SliceMode. Defaults to nixio.SliceMode.Exclusive, i.e. the end position is not part of the range.
+        :type mode: nixio.SliceMode
 
         :returns: The respective start and end indices. None, if the range is empty
         :rtype: tuple of int
@@ -829,11 +830,11 @@ class SetDimension(Dimension):
         :raises: ValueError if invalid mode is given
         :raises: Index Error if start position is greater than end position.
         """
-        if mode is not RangeMode.Exclusive and mode is not RangeMode.Inclusive:
-            raise ValueError("Unknown RangeMode: {}".format(mode))
+        if mode is not SliceMode.Exclusive and mode is not SliceMode.Inclusive:
+            raise ValueError("Unknown SliceMode: {}".format(mode))
 
         dim_labels = self.labels
-        end_mode = IndexMode.Less if mode == RangeMode.Exclusive else IndexMode.LessOrEqual
+        end_mode = IndexMode.Less if mode == SliceMode.Exclusive else IndexMode.LessOrEqual
         if start_position > end_position:
             raise IndexError("Start position {} is greater than end position {}.".format(start_position, end_position))
         try:
