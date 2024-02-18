@@ -1,4 +1,5 @@
 import importlib.util as getmod
+import importlib
 import os
 import runpy
 import sys
@@ -22,11 +23,15 @@ class TestDocumentationExamples(unittest.TestCase):
     def handle_lif(self):
         lif_path = Path.joinpath(self.examples_path, "lif.py")
         spec = getmod.spec_from_file_location("lif", str(lif_path))
-        spec.loader.load_module("lif")
+        spec = importlib.util.spec_from_file_location("lif", str(lif_path))
+        foo = importlib.util.module_from_spec(spec)
+        sys.modules["lif"] = foo
+        spec.loader.exec_module(foo)
 
     def handle_image(self):
         image_path = Path.joinpath(self.examples_path, TEST_IMAGE)
-        copyfile(str(image_path), str(Path.joinpath(Path(os.getcwd()), TEST_IMAGE)))
+        copyfile(str(image_path), str(
+            Path.joinpath(Path(os.getcwd()), TEST_IMAGE)))
 
     def setUp(self):
         curr_path = os.getcwd()
