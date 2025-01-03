@@ -1,7 +1,9 @@
-import numpy as np
 import nixio
+import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
+
+import docutils
 
 
 def create_example_data(nixfile):
@@ -70,16 +72,20 @@ def plot(nixfile):
         rect = patches.Rectangle((interval, 1.05), extent, -2.1, alpha=0.5,
                                  facecolor="silver", edgecolor='k', lw=0.75, ls='--')
         ax.add_patch(rect)
+        stim_freq = mtag.feature_data(i, "stimulus frequency")[:]  # should be scalar, we will use item() to read it
         ax.text(interval + extent / 2, -1.25,
-                "%.1f %s" % (mtag.feature_data(i, "stimulus frequency")[:],
+                "%.1f %s" % (stim_freq.item(),
                              mtag.features["stimulus frequency"].data.unit), fontsize=8, ha="center")
     ax.legend((l, rect), (signal_da.name, mtag.name), loc=1, frameon=False, ncol=2)
 
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
     fig.subplots_adjust(bottom=0.175, left=0.15, right=0.95, top=0.95)
-    # fig.savefig("../images/multiple_regions.png")
-    plt.show()
+    if docutils.is_running_under_pytest():
+        plt.close()
+    else:
+        # fig.savefig("../images/multiple_regions.png")
+        plt.show()
 
 
 def plot_tagged_data(nixfile):
@@ -105,8 +111,11 @@ def plot_tagged_data(nixfile):
         else:
             ax.set_yticklabels([])
     fig.subplots_adjust(left=0.15, bottom=0.2, wspace=0.5, right=0.975)
-    # fig.savefig("../images/reading_tagged_data.png")
-    plt.show()
+    if docutils.is_running_under_pytest():
+        plt.close()
+    else:
+        # fig.savefig("../images/reading_tagged_data.png")
+        plt.show()
 
 
 def main():

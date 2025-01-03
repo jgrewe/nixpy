@@ -7,7 +7,7 @@
 # modification, are permitted under the terms of the BSD License. See
 # LICENSE file in the root of the Project.
 from numbers import Integral, Real
-from six import string_types
+from packaging import version
 
 import numpy as np
 
@@ -15,7 +15,7 @@ import numpy as np
 BOOLS = (bool, np.bool_)
 
 
-class DataType(object):
+class DataType:
     UInt8 = np.uint8
     UInt16 = np.uint16
     UInt32 = np.uint32
@@ -26,7 +26,10 @@ class DataType(object):
     Int64 = np.int64
     Float = np.float32
     Double = np.double
-    String = np.unicode_
+    if version.parse(np.__version__) < version.parse("2.0"):
+        String = np.unicode_
+    else:
+        String = np.str_
     Bool = np.bool_
 
     # type groups
@@ -41,7 +44,7 @@ class DataType(object):
             return cls.Int64
         elif isinstance(value, Real):
             return cls.Double
-        elif isinstance(value, string_types):
+        elif isinstance(value, str):
             return cls.String
         else:
             raise ValueError("Unknown type for value {}".format(value))

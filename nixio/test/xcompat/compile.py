@@ -13,7 +13,7 @@ from glob import glob
 
 import sysconfig
 from setuptools._distutils.ccompiler import new_compiler
-from setuptools.errors import CompileError, LinkError
+from setuptools._distutils.errors import CompileError, LinkError
 
 
 WINDOWS = False

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 """Copyright © 2014 German Neuroinformatics Node (G-Node)
@@ -15,10 +15,12 @@
 
 """
 import nixio
-import lif
 import numpy as np
 import scipy.signal as signal
 import matplotlib.pyplot as plt
+
+import lif
+import docutils
 
 
 def fake_neuron(stepsize=0.001, offset=.8):
@@ -33,7 +35,7 @@ def fake_neuron(stepsize=0.001, offset=.8):
 
 
 def main():
-    stepsize = 0.0001 # s
+    stepsize = 0.0001  # s
     time, voltage, stimulus, spike_times = fake_neuron(stepsize=0.0001)
 
     # create a new file overwriting any existing content
@@ -90,7 +92,7 @@ def plot_data(tag):
     stim_at_spike_time = np.zeros(len(tag.positions[:]))
 
     for i in range(len(tag.positions)):
-        stim_at_spike_time[i] = tag.feature_data(i, 0)[:]
+        stim_at_spike_time[i] = tag.feature_data(i, 0)[:].item()
 
     response_axis = plt.subplot2grid((2, 3), (0, 0), rowspan=1, colspan=2)
     stimulus_axis = plt.subplot2grid((2, 3), (1, 0), rowspan=1, colspan=2, sharex=response_axis)
@@ -109,7 +111,7 @@ def plot_data(tag):
     response_axis.legend(loc="lower center", ncol=2, fontsize=8)
 
     stimulus_axis.plot(stimulus_time, stimulus, color="darkgray", label="stimulus", lw=1)
-    stimulus_axis.scatter(spike_times, np.ones(spike_times.shape)*np.max(stimulus), color='red', label=tag.name)
+    stimulus_axis.scatter(spike_times, np.ones(spike_times.shape) * np.max(stimulus), color='red', label=tag.name)
     stimulus_axis.set_xlabel(stim_time_dim.label + ((" [" + stim_time_dim.unit + "]") if stim_time_dim.unit else ""))
     stimulus_axis.set_ylabel(feature_data_array.label + ((" [" + feature_data_array.unit + "]") if feature_data_array.unit else ""))
     stimulus_axis.set_xlim(np.min(stimulus_time), np.max(stimulus_time))
@@ -119,8 +121,11 @@ def plot_data(tag):
     plt.subplots_adjust(left=0.125, top=0.975, bottom=0.1, right=0.98, hspace=0.25, wspace=0.35)
     plt.gcf().set_size_inches((5.5, 4.5))
     # plt.savefig('../images/tagged_feature.png')
-    plt.show()
+    if docutils.is_running_under_pytest():
+        plt.close()
+    else:
+        plt.show()
+
 
 if __name__ == '__main__':
     main()
-

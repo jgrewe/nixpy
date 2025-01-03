@@ -6,11 +6,10 @@
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted under the terms of the BSD License. See
 # LICENSE file in the root of the Project.
-from six import string_types
 import numpy as np
 
 import h5py
-from datetime import datetime
+from datetime import datetime, timezone
 from uuid import uuid4, UUID
 from ..exceptions import exceptions
 from . import names
@@ -98,7 +97,7 @@ def time_to_str(time):
     :return: string in the form "YYYYMMDDTHHMMSS", where T is the date-time separator
     :rtype: str
     """
-    dt = datetime.utcfromtimestamp(time)
+    dt = datetime.fromtimestamp(time, timezone.utc)
     return dt.strftime("%Y%m%dT%H%M%S").encode("utf-8")
 
 
@@ -129,8 +128,6 @@ def check_attr_type(value, type_):
     :param value: the value to check
     :param type_: the type to check against
     """
-    if type_ is str:
-        type_ = string_types
     if value is not None and not isinstance(value, type_):
         raise exceptions.InvalidAttrType(type_, value)
 
