@@ -27,7 +27,8 @@ maintainers = [
 requires-python = ">=3.9"
 dependencies = [
     "numpy >= 1.26.0",
-    "h5py>= 2.0.0"
+    "h5py>= 2.0.0",
+    "packaging",
 ]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
@@ -52,7 +53,8 @@ dev = [
     "matplotlib",
     "scipy",
     "sphinx",
-    "sphinx_rtd_theme"
+    "sphinx_rtd_theme",
+    "ipython",
 ]
 
 [tool.setuptools]
